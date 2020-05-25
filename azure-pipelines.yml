@@ -13,8 +13,14 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  CustomBuildNumber: $(Major).$(Minor).$(Date:yyMMdd).$(Rev:r)
 
 steps:
+- task: Tokenizer@0
+  inputs:
+    sourceFilesPattern: 'Web*/*/AssemblyInfo.cs'
+    tokenDataSource: 'environmentVariables'
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
