@@ -17,7 +17,7 @@ variables:
 steps:
 - task: Tokenizer@0
   inputs:
-    sourcePath: '/Web*/**/AssemblyInfo.cs'
+    sourcePath: 'Web*/**/AssemblyInfo.cs'
     tokenDataSource: 'environmentVariables'
 
 - task: NuGetToolInstaller@1
