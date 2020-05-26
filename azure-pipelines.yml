@@ -3,7 +3,7 @@
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
-name: $(Year:yy)$(DayOfYear)$(Rev:.r)
+name: $(Major).$(Minor).$(Year:yy)$(DayOfYear)$(Rev:.r)
 
 trigger:
 - master
@@ -15,7 +15,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  CustomBuildNumber: '$(Major).$(Minor).$(Build.BuildNumber)'
+  CustomBuildNumber: '$(Build.BuildNumber)'
 
 steps:
 - task: Tokenizer@0
