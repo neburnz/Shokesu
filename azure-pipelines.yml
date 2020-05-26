@@ -13,7 +13,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  CustomBuildNumber: '$(Major).$(Minor).$(Date:yyMMdd).$(Rev:r)'
+  CustomBuildNumber: '$(Major).$(Minor).($(Date:yyMMdd)).($(Rev:r))'
 
 steps:
 - task: Tokenizer@0
