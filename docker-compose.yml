@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  webapp_container:
+    image: webapp_image
+    build:
+      context: .
+      dockerfile: DockerfileWeb
+    ports:
+      - "80"
+    depends_on:
+      - webapi_container
+  webapi_container:
+    image: webapi_image
+    build:
+      context: .
+      dockerfile: DockerfileApi
+    ports:
+      - "80"
+
+networks:
+  default:
+    external:
+      name: nat

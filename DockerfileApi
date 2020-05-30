@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.7.2 AS build
+
+WORKDIR /app
+
+COPY ShokesuApi.sln .
+COPY nuget.config .
+COPY WebApi/*.csproj ./WebApi/
+COPY WebApi/*.config ./WebApi/
+RUN nuget restore
+
+COPY WebApi/. ./WebApi/
+
+WORKDIR /app/WebApi
+RUN msbuild /p:Configuration=Release
+
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2 AS runtime
+
+WORKDIR /inetpub/wwwroot
+COPY --from=build /app/WebApi/. ./
