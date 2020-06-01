@@ -10,6 +10,7 @@ services:
       - "80"
     depends_on:
       - webapi_container
+
   webapi_container:
     image: webapi_image
     build:
