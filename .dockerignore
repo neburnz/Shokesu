@@ -1,0 +1,12 @@
+packages/
+
+bin/
+obj/
+
+.git
+.gitattributes
+.gitignore
+
+.vs
+
+*.user
